@@ -11,18 +11,23 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import TabButton from "./TabButton";
 import Animated, {
+  Extrapolate,
+  interpolate,
   useAnimatedStyle,
   useSharedValue,
+  withClamp,
   withSpring,
+  withTiming,
 } from "react-native-reanimated";
 import { useState } from "react";
 
-function CustomTabBar({ state, descriptors, navigation }) {
+function CustomTabBar({ state, navigation, scrollY }) {
   const selectedColor = Colors.white;
   const unSelectedColor = Colors.brown;
   const [dimensions, setdimensions] = useState({ height: 20, width: 100 });
   const buttonWidth = dimensions.width / state.routes.length;
   const tabPositionX = useSharedValue(0);
+
   const onTabbarLayout = (LayoutChangeEvent) => {
     setdimensions({
       height: LayoutChangeEvent.nativeEvent.layout.height,
@@ -31,13 +36,32 @@ function CustomTabBar({ state, descriptors, navigation }) {
   };
 
   const animatedStyel = useAnimatedStyle(() => {
-
     return {
       transform: [{ translateX: tabPositionX.value }],
     };
   });
+
+  const hideTabbar = useAnimatedStyle(() => {
+    // console.log("scroll value", scrollY.value);
+
+    const translateY = interpolate(scrollY.value, [0, 100], [0, 100]);
+
+    return {
+      transform: [
+        {
+          translateY: withClamp(
+            { min: 0, max: 100 },
+            withTiming(translateY, { duration: 200 })
+          ),
+        },
+      ],
+    };
+  });
   return (
-    <View style={styles.tabbar} onLayout={onTabbarLayout}>
+    <Animated.View
+      style={[styles.tabbar, hideTabbar]}
+      onLayout={onTabbarLayout}
+    >
       <Animated.View
         style={[
           {
@@ -46,7 +70,7 @@ function CustomTabBar({ state, descriptors, navigation }) {
             height: dimensions.height - 25,
             width: buttonWidth - 25,
             borderRadius: 35,
-            marginHorizontal:12
+            marginHorizontal: 12,
           },
           animatedStyel,
         ]}
@@ -66,7 +90,9 @@ function CustomTabBar({ state, descriptors, navigation }) {
           if (!isFocused && !event.defaultPrevented) {
             navigation.navigate(route.name, route.params);
           }
-          tabPositionX.value = withSpring(buttonWidth * index , {duration:800});
+          tabPositionX.value = withSpring(buttonWidth * index, {
+            duration: 800,
+          });
         };
 
         return (
@@ -102,7 +128,7 @@ function CustomTabBar({ state, descriptors, navigation }) {
         //   </TouchableOpacity>
         // );
       })}
-    </View>
+    </Animated.View>
   );
 }
 
