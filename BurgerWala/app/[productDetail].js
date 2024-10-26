@@ -6,18 +6,20 @@ import { Colors } from "../config/Colors";
 import { useSharedValue } from "react-native-reanimated";
 import Slider from "@react-native-community/slider";
 import CustomBTN from "../Components/CustomBTN";
-import {useNavigation} from 'expo-router'
+import { useNavigation } from "expo-router";
+import Animated from "react-native-reanimated";
+
 // import { ColorProperties } from "react-native-reanimated/lib/typescript/reanimated2/Colors";
 
 const ProductDetails = ({ route, navigation }) => {
   const { id, name, description, price, image, ingredients, rating } =
     useLocalSearchParams();
-  // console.log(image);
+  console.log(`sharedTag${id}`);
   // console.log(typeof ingredients);
-  const navigate=useNavigation()
-const handlePlaceOrder=()=>{
-     navigate.navigate('Cart')
-}
+  const navigate = useNavigation();
+  const handlePlaceOrder = () => {
+    navigate.navigate("Cart");
+  };
 
   return (
     <View
@@ -48,7 +50,12 @@ const handlePlaceOrder=()=>{
         }}
       />
       <View style={styles.imageContainer}>
-        <Image source={image} style={styles.image} resizeMode="contain" />
+        <Animated.Image
+          source={image}
+          style={styles.image}
+          resizeMode="contain"
+          sharedTransitionTag={`sharedTag${id}`}
+        />
       </View>
       <View style={styles.titleContainer}>
         <View>
@@ -79,7 +86,7 @@ const handlePlaceOrder=()=>{
               paddingVertical: 5,
             }}
           >
-            {ingredients.split(",").map((i, index) => (
+            {ingredients?.split(",").map((i, index) => (
               <Text
                 key={index}
                 style={{
@@ -143,7 +150,7 @@ const handlePlaceOrder=()=>{
               maximumTrackTintColor={Colors.red}
               style={{ height: 25, width: 150 }}
               thumbImage={require("../assets/fire3.png")}
-            /> 
+            />
           </View>
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
@@ -226,11 +233,11 @@ const handlePlaceOrder=()=>{
         }}
       >
         <CustomBTN
-          title={`8.5 ₹`}
+          title={`${price} ₹`}
           titleStyle={{ fontFamily: "Poppins_500Medium", fontWeight: "bold" }}
         />
         <CustomBTN
-        onPress={handlePlaceOrder}
+          onPress={handlePlaceOrder}
           title="ORDER NOW"
           btnstyle={{ backgroundColor: Colors.brown, paddingHorizontal: 55 }}
           titleStyle={{

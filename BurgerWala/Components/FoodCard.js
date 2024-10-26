@@ -11,21 +11,21 @@ import React, { useState } from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Colors } from "../config/Colors";
 import { Link, useRouter } from "expo-router";
+import Animated from "react-native-reanimated";
 
 const FoodCard = ({ data }) => {
-  const{image,name,price,rating}=data;
-const [imageURL, setimageURL] = useState(image)
+  const { image, name, price, rating, id } = data;
+  const [imageURL, setimageURL] = useState(image);
+  // console.log(`sharedTag${id}`);
 
   const router = useRouter();
   // console.log(imageURL);
-  
-
 
   return (
     <Link
       asChild
       href={{
-        pathname: "/ProductDetails",
+        pathname: "/[productDetail]",
         params: data,
       }}
     >
@@ -33,11 +33,14 @@ const [imageURL, setimageURL] = useState(image)
         <View
           style={{ justifyContent: "center", alignItems: "center", margin: 2 }}
         >
-          <Image 
+          <Animated.Image
             // source={require('../assets/images2/Burger1.png')}
+            sharedTransitionTag={`sharedTag${id}`}
+
             source={image}
             style={styles.foodImage}
             resizeMode="contain"
+
           />
         </View>
         <View style={{ paddingLeft: 10 }}>

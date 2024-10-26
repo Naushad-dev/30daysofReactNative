@@ -11,7 +11,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import TabButton from "./TabButton";
 import Animated, {
-  Extrapolate,
+
   interpolate,
   useAnimatedStyle,
   useSharedValue,

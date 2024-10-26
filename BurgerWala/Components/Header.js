@@ -1,9 +1,10 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useFonts, Lobster_400Regular } from "@expo-google-fonts/lobster";
 import { Poppins_500Medium } from "@expo-google-fonts/poppins";
 
 import { Colors } from "../config/Colors";
+import { Link, router } from "expo-router";
 
 const Header = () => {
   let [fontLoaded] = useFonts({
@@ -25,13 +26,18 @@ const Header = () => {
         >
           FoodGo
         </Text>
-        <Image
-          source={{ uri: "https://randomuser.me/api/portraits/med/men/93.jpg" }}
-          height={50}
-          width={50}
-          resizeMode="cover"
-          style={{ marginRight: 15, borderRadius: 25 }}
-        />
+        <Pressable onPress={()=>router.push('/Profile')}>
+       
+          <Image
+            source={{
+              uri: "https://randomuser.me/api/portraits/med/men/93.jpg",
+            }}
+            height={50}
+            width={50}
+            resizeMode="cover"
+            style={{ marginRight: 15, borderRadius: 25 }}
+          />
+        </Pressable>
       </View>
       <View style={styles.tagLine}>
         <Text style={[{ fontSize: 18, fontFamily: "Poppins_500Medium" }]}>

@@ -18,7 +18,7 @@ export const icons = {
       <Ionicons name="chatbubble-outline" size={18}  {...props} />
 
     ),
-    profile: (props) => (
-      <AntDesign name="user" size={18}  {...props} />
+    favourite: (props) => (
+      <AntDesign name="hearto" size={18}  {...props} />
     ),
   };

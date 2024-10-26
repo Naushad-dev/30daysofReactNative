@@ -23,7 +23,7 @@ const _layout = () => {
       <Tabs.Screen name="index" options={{ headerShown: false }} />
       <Tabs.Screen name="Orders" options={{ headerShown: false }} />
       <Tabs.Screen name="chats" options={{ headerShown: false }} />
-      <Tabs.Screen name="profile" options={{ headerShown: false }} />
+      <Tabs.Screen name="favourite" options={{ headerShown: false }} />
     </Tabs>
   );
 };

@@ -2,15 +2,16 @@ import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 import { CategoriesData } from "../config/Data";
 import { Colors } from "../config/Colors";
+import Animated, { FadeInDown } from "react-native-reanimated";
 
 const Categories = () => {
   const [selected, setselected] = useState("All");
-  console.log(CategoriesData);
+  // console.log(CategoriesData);
 
   return (
     <View style={styles.container}>
-      <FlatList
-      
+      <Animated.FlatList
+      entering={FadeInDown.duration(200)}
         data={CategoriesData}
         renderItem={({ item }) => (
           <Pressable

@@ -25,7 +25,7 @@ export const Menu = [
     description:
       "Indulge in the smoky flavor of bacon with a classic cheeseburger topped with crispy bacon.",
     ingredients: ["beef patty", "cheese", "bacon", "lettuce", "tomato", "bun"],
-    image:require("../assets/images2/Burger2.png"),
+    image: require("../assets/images2/Burger2.png"),
     price: 80,
     rating: "4.3",
   },
@@ -43,7 +43,7 @@ export const Menu = [
       "pickles",
       "buns",
     ],
-    image:require("../assets/images2/Burger3.png"),
+    image: require("../assets/images2/Burger3.png"),
     price: 125,
     rating: "3.1",
   },
@@ -72,7 +72,7 @@ export const Menu = [
     description:
       "Twice the beef, twice the cheese! This burger is perfect for meat lovers.",
     ingredients: ["two beef patties", "cheese", "lettuce", "tomato", "bun"],
-    image:require("../assets/images2/Burger1.png"),
+    image: require("../assets/images2/Burger1.png"),
     price: 125,
     rating: "4.2",
   },
@@ -103,7 +103,7 @@ export const Menu = [
     name: "Grilled Cheese",
     description: "A classic comfort food with melted cheese on grilled bread.",
     ingredients: ["cheese", "bread"],
-    image:require("../assets/images2/Burger1.png"),
+    image: require("../assets/images2/Burger1.png"),
     price: 160,
     rating: "4.1",
   },
@@ -120,7 +120,7 @@ export const Menu = [
       "tomato",
       "bun",
     ],
-    image:require("../assets/images2/Burger1.png"),
+    image: require("../assets/images2/Burger1.png"),
     price: 115,
     rating: "4.1",
   },
@@ -138,5 +138,25 @@ export const Menu = [
       "tomato",
       "bun",
     ],
+  },
+];
+
+export const Payment = [
+  {
+    id: 1,
+    mode: "Credit Card",
+    cardNumber: "*********1253",
+    image: require("../assets/credit-card.png"),
+  },
+  {
+    id: 2,
+    mode: "Debit Card",
+    cardNumber: "*********1254",
+    image: require("../assets/visa.png"),
+  },
+  {
+    id: 3,
+    mode: "Cash On Delivery",
+    image: require("../assets/cash-on-delivery.png"),
   },
 ];

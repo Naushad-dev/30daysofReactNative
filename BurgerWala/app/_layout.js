@@ -24,18 +24,23 @@ const _layout = () => {
   }
   return (
     <AppContextProvider>
-      <Stack screenOptions={{headerShown:false}} >
+      <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+
         <Stack.Screen
-          name="/ProductDetails"
+          name="/[productDetail]"
           options={{
-            headerShown:true,
+            headerShown: true,
             title: "Product Details",
             headerStyle: { backgroundColor: Colors.red },
-
           }}
         />
-        <Stack.Screen name='/Cart'/>
+        <Stack.Screen
+          name="Profile"
+          
+        />
+        <Stack.Screen name="/Cart" options={{ animation: "flip" }} />
+        <Stack.Screen name="/Orders" />
       </Stack>
     </AppContextProvider>
   );
