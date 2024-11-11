@@ -1,6 +1,6 @@
 import { Button, Image, StyleSheet, Text, View } from "react-native";
 import React, { useEffect } from "react";
-import { navigate } from "../utils/NavigationUtils";
+import { navigate, resetAndNavigate } from "../utils/NavigationUtils";
 import { Colors, lightColors } from "../utils/Constants";
 import Animated, {
   BounceIn,
@@ -38,9 +38,10 @@ const Splash = () => {
   };
 
   useEffect(() => {
+ speak()
     setTimeout(()=>{
-      speak()
-    },1000)
+      resetAndNavigate("Baymax")
+    },5500)
   }, []);
 
   return (
@@ -66,7 +67,7 @@ const Splash = () => {
               BayMax !
             </CustomText>
             <LottieView
-              source={require("../assets/animations/syncing.json")}
+              source={require("../assets/animations/sync.json")}
               autoPlay={true}
               loop
               style={{ width: 280, height: 100 }}

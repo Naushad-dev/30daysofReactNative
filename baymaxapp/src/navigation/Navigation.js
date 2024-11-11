@@ -40,7 +40,7 @@ const Navigation = () => {
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator>
         <Stack.Screen name="Splash" component={Splash} options={{headerShown:false}}/>
-        <Stack.Screen name="Baymax" component={Baymax} />
+        <Stack.Screen name="Baymax" component={Baymax} options={{animation:"flip", headerShown:false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

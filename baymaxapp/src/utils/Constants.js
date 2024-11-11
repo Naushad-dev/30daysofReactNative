@@ -1,4 +1,6 @@
-// // import { screenWidth } from "./Scaling";
+
+
+import { ScreenWidth } from "./Scaling";
 
 export const Colors= {
     primary : '#AF1125',
@@ -24,4 +26,4 @@ export const lightColors = [
     'rgba(255,255,255,0.003)',
 ];
 
-// // export const circleRadius = screenWidth * 0.18
+export const circleRadius = ScreenWidth * 0.18

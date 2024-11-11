@@ -3,6 +3,7 @@
     "name": "baymaxapp",
     "slug": "baymaxapp",
     "version": "1.0.0",
+    
     "android": {
       "package": "com.naushad.dev97.baymaxapp"
     },
